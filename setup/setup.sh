@@ -44,7 +44,7 @@ echo "[*] Installing node-gyp "
 sleep 2
 sudo npm install -g node-gyp
 
-echo "[*] Installing extar dependencies "
+echo "[*] Installing extra dependencies "
 sleep 2
 sudo apt-get -y install libkrb5-dev
 sudo apt get -yinstall pm2
@@ -60,7 +60,7 @@ cd /tmp
 wget https://www.multichain.com/download/multichain-1.0.5.tar.gz
 tar -xvzf multichain-1.0.5.tar.gz
 cd multichain-1.0.5
-mv multichaind multichain-cli multichain-util /usr/local/bin
+sudo mv multichaind multichain-cli multichain-util /usr/local/bin
 echo "[*] multichain installed getting mobios sources"
 sleep 2
 
@@ -68,7 +68,7 @@ cd $HOME
 mkdir $APP
 cd $APP
 mkdir $ANDROID_CLIENT
-cd  git clone https://DragonsAndPostModernists@bitbucket.org/DragonsAndPostModernists/urbanconnect.git $SERVER_DIR
+git clone https://DragonsAndPostModernists@bitbucket.org/DragonsAndPostModernists/urbanconnect.git $SERVER_DIR
 cd $SERVER_DIR
 touch .env
 
