@@ -61,31 +61,14 @@ wget https://www.multichain.com/download/multichain-1.0.5.tar.gz
 tar -xvzf multichain-1.0.5.tar.gz
 cd multichain-1.0.5
 mv multichaind multichain-cli multichain-util /usr/local/bin
-echo "[*] Setting up vim plugins"
-echo "[*] Installing extar dependencies "
+echo "[*] multichain installed getting mobios sources"
 sleep 2
-mkdir ~/.vim
-cd ~/.vim
-mkdir bundle
-mkdir autoload
-
-# **************** vim NERD TREE ! comment this sline out if you want the NERD tree for vim
-cd $HOME
-curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
-cd ~/.vim/bundle
-git clone https://github.com/scrooloose/nerdtree.git
-touch $HOME/.vimrc
-echo ":set autoindent"            > $HOME/.vimrc
-echo ":cindent"                  >> $HOME/.vimrc
-echo ":set number"               >> $HOME/.vimrc
-echo "execute pathogen#infect()" >> $HOME/.vimrc
 
 cd $HOME
 mkdir $APP
 cd $APP
-mkdir $SERVER_DIR
 mkdir $ANDROID_CLIENT
-cd server && git clone https://DragonsAndPostModernists@bitbucket.org/DragonsAndPostModernists/urbanconnect.git $SERVER_DIR
+cd  git clone https://DragonsAndPostModernists@bitbucket.org/DragonsAndPostModernists/urbanconnect.git $SERVER_DIR
 cd $SERVER_DIR
 touch .env
 
