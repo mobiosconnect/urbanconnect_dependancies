@@ -73,7 +73,7 @@ mkdir autoload
 cd $HOME
 curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 cd ~/.vim/bundle
-git clone https://github.com/scooloose/nerdtree.git
+git clone https://github.com/scrooloose/nerdtree.git
 touch $HOME/.vimrc
 echo ":set autoindent"            > $HOME/.vimrc
 echo ":cindent"                  >> $HOME/.vimrc
