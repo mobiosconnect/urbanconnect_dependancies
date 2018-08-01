@@ -46,6 +46,7 @@ sudo npm install -g node-gyp
 
 echo "[*] Installing extra dependencies "
 sleep 2
+
 sudo apt-get -y install libkrb5-dev
 sudo apt get -yinstall pm2
 sudo apt install -y mongodb
