@@ -29,7 +29,7 @@ sudo apt-get -y install python
 echo "[*] Installing NVM and nodejs 8 "
 sleep 2
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
-source ~/.bashrc
+. ~/.bashrc
 nvm install 8
 nvm use 8
 echo "[*] Installing node-gyp "
