@@ -8,7 +8,7 @@ sudo useradd -m -s $(which bash) -G sudo &MOBIOS_USER
 
 
 
-sudo -u &MOBIOS_USER bash << EOF
+sudo -u $MOBIOS_USER bash << EOF
 APP="MobiOs"
 SERVER_DIR="mobios"
 MOBIOS_USER="urbanconnect"
@@ -99,7 +99,7 @@ echo "[*] Setup done would you like to start the server? Y/n"
 read choice
 if [ "$choice" == "y"  ] || [ "$choice" == "Y"  ] then
   # this command will change to pm2 later
-  sudo -u &MOBIOS_USER bash << EOF
+  sudo -u $MOBIOS_USER bash << EOF
      $HOME=$(pwd)
      cd $HOME
      mkdir $APP
