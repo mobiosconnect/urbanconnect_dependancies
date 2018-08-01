@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/sh
 
 APP="MobiOs"
 SERVER_DIR="mobios"
