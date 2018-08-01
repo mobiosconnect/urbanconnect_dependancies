@@ -4,9 +4,8 @@ MOBIOS_USER="urbanconnect"
 
 
 echo "[*] Setting up new Mobios enviroments "
-sudo useradd -m -s $(which bash) -G sudo $MOBIOS_USER
-
-
+sudo useradd -m  $(which bash) $MOBIOS_USER
+sudo usermod -aG sudo username
 
 sudo -u $MOBIOS_USER bash << EOF
 APP="MobiOs"
