@@ -84,6 +84,8 @@ echo "[*] Setup done would you like to start the server? Y/n"
 read choice
 if [ "$choice" == "y"  ] || [ "$choice" == "Y"  ]
 then
+     echo "[*] starting mobio server "
+    sleep 2
      node keystone.js
 else
   echo "[*] Goodbye ."
