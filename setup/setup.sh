@@ -28,16 +28,21 @@ sudo apt-get -y install python
 
 echo "[*] Installing NVM and nodejs 8 "
 sleep 2
+
+nodeV=$(node -v)
+
+
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
 sudo apt-get update
 
-. ~/.bashrc
+export NVM_DIR="$(pwd)/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
 nvm install 8
 nvm use 8
 echo "[*] Installing node-gyp "
 sleep 2
-npm install -g node-gyp
+sudo npm install -g node-gyp
 
 echo "[*] Installing extar dependencies "
 sleep 2
