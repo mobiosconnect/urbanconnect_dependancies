@@ -82,7 +82,8 @@ npm install
 
 echo "[*] Setup done would you like to start the server? Y/n"
 read choice
-if [ "$choice" == "y"  ] || [ "$choice" == "Y"  ] then
+if [ "$choice" == "y"  ] || [ "$choice" == "Y"  ]
+then
      node keystone.js
 else
   echo "[*] Goodbye ."
