@@ -1,19 +1,15 @@
 #!/bin/sh
 
 MOBIOS_USER="urbanconnect"
-
-
-echo "[*] Setting up new Mobios enviroments "
-sudo useradd -m  $(which bash) $MOBIOS_USER
-sudo usermod -aG sudo username
-
-sudo -u $MOBIOS_USER bash << EOF
 APP="MobiOs"
 SERVER_DIR="mobios"
 MOBIOS_USER="urbanconnect"
 ANDROID_CLIENT="android_client"
 CURRENT_DIR=$(pwd)
-echo "[*] user $(whoami) create starting setup"
+
+
+echo "[*] Setting up new Mobios enviroments "
+sleep 2
 
 sudo apt-get update
 sudo apt-get -y upgrade
@@ -30,7 +26,7 @@ sudo apt-get -y install build-essential
 sudo apt-get -y install python
 
 
-echo "[*] Installing NVN and nodejs 8 "
+echo "[*] Installing NVM and nodejs 8 "
 sleep 2
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
 source ~/.bashrc
@@ -92,20 +88,10 @@ echo "MOBIOS_EMAIL_ADDRESS=mobiosdonotreply@gmail.com" >> .env
 
 npm install
 
-EOF
-
 echo "[*] Setup done would you like to start the server? Y/n"
 read choice
 if [ "$choice" == "y"  ] || [ "$choice" == "Y"  ] then
-  # this command will change to pm2 later
-  sudo -u $MOBIOS_USER bash << EOF
-     $HOME=$(pwd)
-     cd $HOME
-     mkdir $APP
-     cd $APP/$SERVER_DIR
      node keystone.js
-EOF
-
 else
   echo "[*] Goodbye ."
   exit
