@@ -1,28 +1,29 @@
 #!/bin/sh
 
-APP="MobiOs"
-SERVER_DIR="mobios"
-ANDROID_CLIENT="android_client"
-CURRENT_DIR=$(pwd)
+MOBIOS_USER="urbanconnect"
 
 
 echo "[*] Setting up new Mobios enviroments "
-sudo useradd -m -s $(which bash) -G sudo mobios
+sudo useradd -m -s $(which bash) -G sudo &MOBIOS_USER
 
 
 
-sudo -u mobios bash << EOF
-
+sudo -u &MOBIOS_USER bash << EOF
+APP="MobiOs"
+SERVER_DIR="mobios"
+MOBIOS_USER="urbanconnect"
+ANDROID_CLIENT="android_client"
+CURRENT_DIR=$(pwd)
 echo "[*] user $(whoami) create starting setup"
 
 sudo apt-get update
-sudo apt-get upgrade
-sudo apt-get install curl
-sudo apt-get install wget
-sudo apt-get install git
-sudo apt-get install libssl-dev
-sudo apt-get install build-essential
-sudo apt-get install python
+sudo apt-get -y upgrade
+sudo apt-get -y install curl
+sudo apt-get -y install wget
+sudo apt-get -y install git
+sudo apt-get -y install libssl-dev
+sudo apt-get -y install build-essential
+sudo apt-get -y install python
 
 
 echo "[*] Installing NVN and nodejs 8 "
@@ -37,11 +38,11 @@ npm install -g node-gyp
 
 echo "[*] Installing extar dependencies "
 sleep 2
-sudo apt-get install libkrb5-dev
-sudo apt get install pm2
+sudo apt-get -y install libkrb5-dev
+sudo apt get -yinstall pm2
 sudo apt install -y mongodb
 echo "[*] enabling MongoDB on boot "
-sudo apt-get install tmux
+sudo apt-get install -y tmux
 sleep 2
 sudo systemctl enable mongodb
 
@@ -73,8 +74,8 @@ echo "execute pathogen#infect()" >> $HOME/.vimrc
 
 cd $HOME
 mkdir $APP
-cd MobiOs
-mkdir server
+cd $APP
+mkdir $SERVER_DIR
 mkdir $ANDROID_CLIENT
 cd server && git clone https://DragonsAndPostModernists@bitbucket.org/DragonsAndPostModernists/urbanconnect.git $SERVER_DIR
 cd $SERVER_DIR
@@ -87,13 +88,21 @@ echo "MOBIOS_EMAIL_ADDRESS=mobiosdonotreply@gmail.com" >> .env
 
 npm install
 
+EOF
+
 echo "[*] Setup done would you like to start the server? Y/n"
 read choice
 if [ "$choice" == "y"  ] || [ "$choice" == "Y"  ] then
   # this command will change to pm2 later
-  node keystone.js
+  sudo -u &MOBIOS_USER bash << EOF
+     $HOME=$(pwd)
+     cd $HOME
+     mkdir $APP
+     cd $APP/$SERVER_DIR
+     node keystone.js
+EOF
+
 else
   echo "[*] Goodbye ."
   exit
 fi
-EOF
