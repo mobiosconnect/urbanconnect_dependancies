@@ -8,9 +8,10 @@ CURRENT_DIR=$(pwd)
 
 echo "[*] Setting up new Mobios enviroments "
 sudo useradd -m -s $(which bash) -G sudo mobios
-echo "[*] Adding mobios ot sudo"
 
-sudo -u someuser bash << EOF
+
+
+sudo -u mobios bash << EOF
 
 echo "[*] user $(whoami) create starting setup"
 
