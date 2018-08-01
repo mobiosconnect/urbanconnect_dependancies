@@ -21,6 +21,11 @@ sudo apt-get -y upgrade
 sudo apt-get -y install curl
 sudo apt-get -y install wget
 sudo apt-get -y install git
+
+git config --global user.email "example@mobios.com"
+git config --global user.name "mobios"
+git config --global core.autocrlf false
+
 sudo apt-get -y install libssl-dev
 sudo apt-get -y install build-essential
 sudo apt-get -y install python
